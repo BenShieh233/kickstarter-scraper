@@ -1,0 +1,35 @@
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data / outputs
+*.xlsx
+*.json
+*.log
+
+# Playwright
+pw_user_data/
+
+# testing files
+clean_and_install.py
+generate_requirements.py
+kickstarter.ipynb
+kickstarter.py
+kickstarter-scraper.py

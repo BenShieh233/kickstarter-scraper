@@ -1,0 +1,24 @@
+# config.yaml - 完整示例（带注释）
+# 目标页面（必须是 comments 页面）
+comments_page: "https://www.kickstarter.com/projects/libernovo/libernovo-omni-worlds-first-dynamic-ergonomic-chair/comments"
+
+# 输出文件（run.py 默认会在文件名后加时间戳以防覆盖）
+output_json: "kickstarter_comments.json"
+output_excel: "kickstarter_comments.xlsx"  # 可选：解析后导出 Excel 的默认名
+
+# 翻页/超时控制
+max_clicks: 30            # 最多点击 "Load more" 的次数
+click_timeout_ms: 15000   # 点击后等待 /graph 响应的超时时间（毫秒）
+initial_wait_ms: 6000     # 打开页面后等待 JS challenge 的时间（毫秒）
+
+# 浏览器与展示
+headless: true            # 是否以 headless 模式运行（本地调试可设 false）
+window_width: 1400
+window_height: 900
+user_agent: null          # 可选：自定义 UA，null 表示使用默认
+
+# 滚动模拟（human_like_scroll）
+scroll_min: 50
+scroll_max: 150
+scroll_sleep_min: 0.1
+scroll_sleep_max: 0.4
