@@ -78,6 +78,8 @@ python run.py --output_json custom.json --output_excel custom.xlsx
 ```
 运行完成后，抓取的评论和回复将分别保存到指定的 JSON 和 Excel 文件中。
 
+——————
+
 许可证
 
 本项目开源，采用 MIT 许可证。
