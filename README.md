@@ -24,7 +24,7 @@
 ```bash
 git clone https://github.com/BenShieh233/kickstarter-scraper.git
 cd kickstarter-scraper
-
+```
 
 ### 2. 安装依赖
 ```bash
@@ -74,6 +74,13 @@ python run.py
 
 使用命令行参数覆盖配置：
 ```bash
-python run.py --output_json (自定义输出文件路径) --output_excel (自定义输出表格路径)
+python run.py --output_json custom.json --output_excel custom.xlsx
 ```
+运行完成后，抓取的评论和回复将分别保存到指定的 JSON 和 Excel 文件中。
 
+许可证
+
+本项目开源，采用 MIT 许可证。
+你可以自由使用、修改和分发本项目代码，但 必须保留原作者 (Ben Xie) 的署名。
+
+详情请参阅 LICENSE 文件。
