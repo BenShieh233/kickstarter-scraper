@@ -49,7 +49,7 @@ def str_to_bool(s: Optional[str], default: bool) -> bool:
         return default
     return s.lower() == "true"
 
-def make_output_names(base_json: str, add_ts: bool = True) -> (str, str):
+def make_output_names(base_json: str, add_ts: bool = True) -> (str, str): # type: ignore
     """返回 (json_file, excel_file)"""
     if add_ts:
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
