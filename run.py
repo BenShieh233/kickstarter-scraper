@@ -28,7 +28,7 @@ def load_config(path: str = "config.yaml") -> dict:
 
 def parse_args():
     p = argparse.ArgumentParser(description="Kickstarter 评论爬虫（支持可选解析）")
-    p.add_argument("--config", type=str, default="config.yaml", help="配置文件路径（yaml）")
+    p.add_argument("--comments_page", type=str, default="config.yaml", help="配置文件路径（yaml）")
     p.add_argument("--url", type=str, help="覆盖配置：评论页面 URL")
     p.add_argument("--output_json", type=str, help="覆盖配置：输出 JSON 文件名（可不带 .json）")
     p.add_argument("--output_excel", type=str, help="覆盖配置：输出 Excel 文件名（.xlsx）")
