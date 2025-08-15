@@ -120,7 +120,6 @@ async def run_crawler(
         await page.goto(url)
         await asyncio.sleep(initial_wait_ms / 1000)  # 毫秒->秒
 
-        # 等待首次 /graph（不强制）
         try:
             async with page.expect_response(lambda r: "/graph" in r.url and r.status == 200, timeout=5000) as resp_ctx:
                 pass
@@ -128,7 +127,6 @@ async def run_crawler(
         except PlaywrightTimeoutError:
             print("No initial /graph response observed within timeout; continuing.")
 
-        # 循环点击 Load more（只负责触发请求，保存/去重交由 on_response）
         for attempt in range(1, max_clicks + 1):
             print(f"\nAttempt {attempt}/{max_clicks} to click Load more... (time {time.strftime('%X')})")
 

@@ -29,6 +29,7 @@ cd kickstarter-scraper
 ### 2. 安装依赖
 ```bash
 pip install -r requirements.txt
+playwright install # 安装 playwright 浏览器
 ```
 
 ### 3. 配置参数
