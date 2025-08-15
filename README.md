@@ -56,7 +56,6 @@ initial_wait_ms: 6000                        # 初始等待时间（毫秒）
 headless: true                               # 是否无头模式运行
 window_width: 1400                           # 浏览器窗口宽度
 window_height: 900                           # 浏览器窗口高度
-user_agent: null                             # 自定义 User-Agent，可为空
 scroll_min: 50                               # 滚动最小步长
 scroll_max: 150                              # 滚动最大步长
 scroll_sleep_min: 0.1                        # 滚动最小间隔（秒）
@@ -85,7 +84,7 @@ python run.py
 使用命令行参数覆盖配置：
 #### 常用命令行参数（CLI Arguments）
 
-- `--url`：Kickstarter 评论页面的 URL。
+- `--url` 或 `comments_page`：Kickstarter 评论页面的 URL。
 - `--output_json`：输出的 JSON 文件名。
 - `--output_excel`：输出的 Excel 文件名。
 - `--max_clicks`：点击“加载更多评论”的最大次数。
@@ -98,6 +97,7 @@ python run.py
 ```bash
 python run.py --comments_page "https://www.kickstarter.com/..."
 ```
+参数同时兼容 `--url` 和 `--comments_page` 
 
 只爬取JSON（不解析为Excel）
 ```bash
