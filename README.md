@@ -1,4 +1,4 @@
-# Kickstarter Scraper
+# Kickstarter Comments Scraper
 
 © 2025 Ben Xie  
 作者：Ben Xie
