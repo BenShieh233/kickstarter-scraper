@@ -25,6 +25,7 @@ def parse_edges_to_excel(input_file, output_file):
             "body": node.get("body"),
             "created_at": safe_timestamp(node.get("createdAt")),
             "removed": node.get("removedPerGuidelines"),
+            "author_badges": node.get("authorBadges"),
             "deleted": node.get("deleted"),
             "pinned_at": safe_timestamp(node.get("pinnedAt")),
             "author_canceled_pledge": node.get("authorCanceledPledge"),
