@@ -26,17 +26,25 @@ git clone https://github.com/BenShieh233/kickstarter-scraper.git
 cd kickstarter-scraper
 ```
 
-### 2. 安装依赖
+### 2. 创建并激活虚拟环境
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+```
+激活后请确认 `python` 指向虚拟环境： `which python` (max/linux) 或 `where python` (windows)
+
+
+### 3. 安装依赖
 ```bash
 pip install -r requirements.txt
 playwright install # 安装 playwright 浏览器
 ```
 
-### 3. 配置参数
+### 4. 配置参数
 项目支持两种方式配置参数：
 
-方式A: 通过 config.yaml 修改
-1. 打开 config.yaml 文件
+方式A: 通过 `config.yaml` 修改
+1. 打开 `config.yaml` 文件
 2. 根据需求修改配置项，例如：
 ```yaml
 comments_page: "https://www.kickstarter.com/projects/libernovo/libernovo-omni-worlds-first-dynamic-ergonomic-chair/comments"
@@ -58,16 +66,17 @@ scroll_sleep_max: 0.4                        # 滚动最大间隔（秒）
 方式B: 直接在命令行导入参数
 ```bash
 python run.py \
-  --comments_page https://www.kickstarter.com/projects/libernovo/libernovo-omni-worlds-first-dynamic-ergonomic-chair/comments \
-  --output_json custom_output.json \
-  --output_excel custom_output.xlsx \
-  --max_clicks 5
+  --comments_page "https://www.kickstarter.com/projects/xxx/yyy/comments" \
+  --output_json "custom.json" \
+  --output_excel "custom.xlsx" \
+  --max_clicks 10 \
+  --headless false
 
 ```
-·命令行参数会覆盖 config.yaml 中对应的配置
+·命令行参数会覆盖 config.yaml 中对应的配置  
 ·支持灵活调用不同配置，无需修改文件
 
-### 4. 启动项目
+### 5. 启动项目
 使用默认配置：
 ```bash
 python run.py
@@ -85,6 +94,20 @@ python run.py
 - `--parse-only`：只解析已有 JSON 文件生成 Excel。
 - `--input_json`：要解析的 JSON 文件（与 `--parse-only` 一起使用）。
 
+覆盖 URL
+```bash
+python run.py --comments_page "https://www.kickstarter.com/..."
+```
+
+只爬取JSON（不解析为Excel）
+```bash
+python run.py --no-parse
+```
+
+只解析已有JSON为Excel（跳过爬取）
+```bash
+python run.py --parse-only --input_json custom.json --output_excel custom.xlsx
+```
 
 许可证
 

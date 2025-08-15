@@ -1,10 +1,10 @@
-# config.yaml - 完整示例（带注释）
-# 目标页面（必须是 comments 页面）
+# config.yaml - 精简版（仅包含 run_crawler 所需字段 + 输出/解析 控制）
+# 要爬取的评论页面（必须是 comments 页面）
 comments_page: "https://www.kickstarter.com/projects/libernovo/libernovo-omni-worlds-first-dynamic-ergonomic-chair/comments"
 
-# 输出文件（run.py 默认会在文件名后加时间戳以防覆盖）
+# 输出文件（run.py 默认会在文件名后加时间戳以防覆盖，除非设置 append_timestamp: false）
 output_json: "kickstarter_comments.json"
-output_excel: "kickstarter_comments.xlsx"  # 可选：解析后导出 Excel 的默认名
+output_excel: "kickstarter_comments.xlsx"  # 解析后的默认 Excel 文件名（可选）
 
 # 翻页/超时控制
 max_clicks: 30            # 最多点击 "Load more" 的次数
@@ -15,10 +15,12 @@ initial_wait_ms: 6000     # 打开页面后等待 JS challenge 的时间（毫�
 headless: true            # 是否以 headless 模式运行（本地调试可设 false）
 window_width: 1400
 window_height: 900
-user_agent: null          # 可选：自定义 UA，null 表示使用默认
 
 # 滚动模拟（human_like_scroll）
 scroll_min: 50
 scroll_max: 150
 scroll_sleep_min: 0.1
 scroll_sleep_max: 0.4
+
+# 是否在输出文件名上追加时间戳（可选：默认 true）
+append_timestamp: true
