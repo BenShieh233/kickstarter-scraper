@@ -118,67 +118,100 @@ python run.py --parse-only --input_json custom.json --output_excel custom.xlsx
 
 ---
 
-# Kickstarter Scraper
+# Kickstarter Comments Scraper
 
 A Python tool for scraping Kickstarter project comments and exporting them to JSON/Excel.
 
 ## Features
 
-- Scrape comments from a Kickstarter project page.
-- Save results as JSON.
-- Parse and export JSON to Excel (.xlsx).
+© 2025 Ben Xie
+Author: Ben Xie
+Project Overview
+
+This project is designed for automatically scraping comments and replies from Kickstarter projects. It supports asynchronous crawling for high-efficiency data collection and provides flexible parameter configuration, allowing customization of scraping behavior.
+
+Key features:
+- Automatic scraping of project comments and replies (at most 3 replies for now).
+- Asynchronous crawling for improved efficiency
+- Customizable scraping parameters (click counts, wait times, scroll ranges, etc.)
 - Configurable via `config.yaml` or CLI arguments.
-- Supports headless browser operation and customizable scraping behavior.
+- Output in JSON and Excel formats for further analysis
+
+Use cases:
+- Automated data collection and analysis
+- Team internal use or open-source sharing
 
 ## Quick Start
 
-### 1. Install Requirements
+## Installation & Usage
 
 Make sure you have Python 3.7+ installed.
 
-Install required Python packages:
-```sh
+### 1. Install required Python packages:
+```bash
+git clone https://github.com/BenShieh233/kickstarter-scraper.git
+cd kickstarter-scraper
+```
+
+### 2. Create and activate a virtual environment
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+```
+After activation, confirm that python points to the virtual environment: which python (Mac/Linux) or where python (Windows)
+
+
+### 3. Install dependencies
+```bash
 pip install -r requirements.txt
+playwright install  # Install Playwright browsers
 ```
-Or, at minimum:
-```sh
-pip install pyyaml
-```
-Other dependencies may be needed (e.g., Selenium, pandas) – see `requirements.txt` or project files.
 
-### 2. Prepare Files
+### 4. Configuration
 
-Ensure the following files are present in the project root:
-- `run.py`
-- `crawler.py` (with `run_crawler` function)
-- `parser.py` (with `parse_edges_to_excel` function)
-- (Optional) `config.yaml`
+The project supports two ways to configure parameters:
 
-### 3. Configuration
+Option A: Modify config.yaml
 
-You can provide configuration in a `config.yaml` file or via CLI arguments.
+1. Open `config.yaml`
+2. Edit the parameters as needed, for example:
+   
 
-Example `config.yaml`:
 ```yaml
-comments_page: "https://www.kickstarter.com/projects/xxxxx/comments"
-output_json: "kickstarter_comments.json"
-output_excel: "kickstarter_comments.xlsx"
-max_clicks: 30
-headless: true
-append_timestamp: true
-# ... more options available, see run.py
+comments_page: "https://www.kickstarter.com/projects/libernovo/libernovo-omni-worlds-first-dynamic-ergonomic-chair/comments"
+output_json: "kickstarter_comments.json"   # Output JSON file
+output_excel: "kickstarter_comments.xlsx"  # Output Excel file
+max_clicks: 30                              # Max "Load more" clicks
+click_timeout_ms: 15000                      # Click timeout (ms)
+initial_wait_ms: 6000                        # Initial wait time (ms)
+headless: true                               # Run in headless mode
+window_width: 1400                           # Browser window width
+window_height: 900                           # Browser window height
+scroll_min: 50                               # Minimum scroll step
+scroll_max: 150                              # Maximum scroll step
+scroll_sleep_min: 0.1                        # Minimum scroll interval (s)
+scroll_sleep_max: 0.4                        # Maximum scroll interval (s)
+
+```
+Option B: Pass parameters via command line
+```bash
+python run.py \
+  --comments_page "https://www.kickstarter.com/projects/xxx/yyy/comments" \
+  --output_json "custom.json" \
+  --output_excel "custom.xlsx" \
+  --max_clicks 10 \
+  --headless false
 ```
 
-### 4. Usage
-
+### 5. Run the project
 Run the scraper with default settings:
 ```sh
 python run.py
 ```
 
-#### Common CLI Arguments
+Using command-line arguments to override config:
 
-- `--url`: Kickstarter comments page URL.
+- `--url` or `--comments_page`: URL of the Kickstarter comments page
 - `--output_json`: Output JSON filename.
 - `--output_excel`: Output Excel filename.
 - `--max_clicks`: Max clicks for "Load more" comments.
@@ -209,17 +242,17 @@ python run.py --parse-only --input_json "kickstarter_comments_20250814_235106.js
 python run.py --output_excel "my_comments.xlsx"
 ```
 
-### 5. Output
+### 6. Output
 
 - JSON file: Scraped comments.
 - Excel file: Parsed comments in tabular format.
 
-### 6. Troubleshooting
+### 7. Troubleshooting
 
 - If you see errors about missing modules or functions (`run_crawler`, `parse_edges_to_excel`), ensure `crawler.py` and `parser.py` exist and have the required functions.
 - The script prints effective configuration at runtime for verification.
 
-### 7. License
+### 8. License
 
 MIT License
 
